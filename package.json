@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 62012",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p 62012"
+    "start": "next start -H 0.0.0.0 -p 62012",
+    "test": "tsc --outDir .ledger-test --rootDir lib/ledger --module commonjs --target es2022 --moduleResolution node --esModuleInterop --strict --skipLibCheck lib/ledger/types.ts lib/ledger/engine.ts lib/ledger/engine.test.ts && node --test .ledger-test && rm -rf .ledger-test && tsc --outDir .ledger-e2e --rootDir /workspace --module commonjs --target es2022 --moduleResolution node --esModuleInterop --strict --skipLibCheck --jsx react-jsx lib/ledger/store.e2e.ts store/ledger.ts && LEDGER_STORE=/workspace/.ledger-e2e/store/ledger.js node --test .ledger-e2e/lib/ledger/store.e2e.js && rm -rf .ledger-e2e"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.1.1",
